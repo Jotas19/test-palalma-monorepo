@@ -1,0 +1,24 @@
+{
+    "name": "palalma-monolito",
+    "private": true,
+    "workspaces": [
+        "apps/frontend",
+        "apps/backend"
+    ],
+    "scripts": {
+        "dev": "concurrently \"npm run dev --workspace=apps/frontend\" \"npm run start:dev --workspace=apps/backend\"",
+        "build": "npm run build --workspace=apps/frontend && npm run build --workspace=apps/backend",
+        "start": "node apps/backend/dist/main.js",
+        "start:prod": "npm run start",
+        "postinstall": "npm run build"
+    },
+    "devDependencies": {
+        "concurrently": "^8.2.2"
+    },
+    "dependencies": {
+        "pg": "^8.15.5"
+    },
+    "engines": {
+        "node": ">=18.0.0"
+    }
+}
